@@ -17,21 +17,18 @@
 	add_action( 'wp_enqueue_scripts', 'fpt_enqueue_files' );
 
 	function fpt_insert_transitions() {
-?>
-	<div class="rbl_fake_transitions active">
-		<?php
-			$transition_type = get_option('fpt-opt-transition-type');
-			$transition_main_color = get_option('fpt-opt-transition-main-color');
+		$transition_type = get_option('fpt-opt-transition-type');
+		$transition_main_color = get_option('fpt-opt-transition-main-color');
 		
-			switch($transition_type){
-				case 'fade':
-				default:
-					echo '<div class="rbl_fake_transitions--fade active" style="background-color:'.$transition_main_color.';"></div>';
-					break;
-			}
-		?>
-	</div>
-<?php
+		$spinner_type = get_option('fpt-opt-spinner-type');
+		
+		if(!empty($transition_type)){
+	?>
+		<div class="rbl_fake_transitions active">
+			<?php include('transitions/'.$transition_type.'.php'); ?>
+		</div>
+	<?php
+		}
 	}
 	add_action( 'wp_footer', 'fpt_insert_transitions' );
 
@@ -80,6 +77,8 @@
 						<select name="fpt-opt-transition-type" id="fpt-opt-transition-type">
 							<option value="">Select a transition-type</option>
 							<option value="fade" <?php echo (get_option('fpt-opt-transition-type') == 'fade') ? 'selected' : ''; ?>>Fade in/out</option>
+							<option value="collapse-vert" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-vert') ? 'selected' : ''; ?>>Collapse vertical</option>
+							<option value="collapse-horz" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-horz') ? 'selected' : ''; ?>>Collapse Horizontal</option>
 						</select>
 					</td>
 				</tr>

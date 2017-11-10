@@ -1,29 +1,83 @@
 .rbl_fake_transitions {
-	height:0;
-	width:100%;
-	position:fixed;
-	top:0;
-	bottom:0;
-	left:0;
-	z-index:-1;
+	height: 0;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
 }
 
 .rbl_fake_transitions.active {
-	height:100%;
-	bottom:0;
-	z-index:99999999;
+	height: 100%;
+	bottom: 0;
+	z-index: 99999999;
 }
 
 .rbl_fake_transitions--fade {
-	opacity:0;
-	position:absolute;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-	transition:opacity .3s ease;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transition: opacity .3s ease;
 }
 
 .rbl_fake_transitions--fade.active {
-	opacity:1;
+	opacity: 1;
+}
+
+/* Collapse Vertical */
+.rbl_fake_transitions--collapse_vert {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transition: bottom .3s ease,
+				top .3s ease;
+}
+
+.rbl_fake_transitions--collapse_vert.fpt_top {
+	top: 0;
+	bottom: 100vh;
+}
+
+.rbl_fake_transitions--collapse_vert.fpt_top.active {
+	bottom: 40vh;
+}
+
+.rbl_fake_transitions--collapse_vert.fpt_bottom {
+	bottom: 0;
+	top: 100vh;
+}
+
+.rbl_fake_transitions--collapse_vert.fpt_bottom.active {
+	top: 40vh;
+}
+
+/* Collapse Horizontal */
+.rbl_fake_transitions--collapse_horz {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	transition: right .3s ease,
+				left .3s ease;
+}
+
+.rbl_fake_transitions--collapse_horz.fpt_left {
+	left: 0;
+	right: 100vw;
+}
+
+.rbl_fake_transitions--collapse_horz.fpt_left.active {
+	right: 40vw;
+}
+
+.rbl_fake_transitions--collapse_horz.fpt_right {
+	right: 0;
+	left: 100vw;
+}
+
+.rbl_fake_transitions--collapse_horz.fpt_right.active {
+	left: 40vw;
 }
