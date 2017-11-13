@@ -79,6 +79,8 @@
 							<option value="fade" <?php echo (get_option('fpt-opt-transition-type') == 'fade') ? 'selected' : ''; ?>>Fade in/out</option>
 							<option value="collapse-vert" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-vert') ? 'selected' : ''; ?>>Collapse vertical</option>
 							<option value="collapse-horz" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-horz') ? 'selected' : ''; ?>>Collapse Horizontal</option>
+							<option value="collapse-diag-vert" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-diag-vert') ? 'selected' : ''; ?>>Collapse Diagnoal/Vertical</option>
+							<option value="collapse-diag-horz" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-diag-horz') ? 'selected' : ''; ?>>Collapse Diagnoal/Horizontal</option>
 						</select>
 					</td>
 				</tr>
