@@ -19,13 +19,23 @@
 	function fpt_insert_transitions() {
 		$transition_type = get_option('fpt-opt-transition-type');
 		$transition_main_color = get_option('fpt-opt-transition-main-color');
-		
+
 		$spinner_type = get_option('fpt-opt-spinner-type');
 		
 		if(!empty($transition_type)){
 	?>
 		<div class="rbl_fake_transitions active">
-			<?php include('transitions/'.$transition_type.'.php'); ?>
+			<?php
+				include('transitions/'.$transition_type.'.php');
+
+				if($spinner_type != 'none') {
+					$spinner_delay = get_option('fpt-opt-spinner-delay');
+					$spinner_main_color = get_option('fpt-opt-spinner-main-color');
+			?>
+			<div class="rbl_fpt_spinner--wrap active" data-delay="<?php echo $spinner_delay; ?>">
+				<?php include('spinners/'.$spinner_type.'.php'); ?>
+			</div>
+			<?php  } ?>
 		</div>
 	<?php
 		}
@@ -47,6 +57,7 @@
 		
 		//Spinner
 		register_setting('fpt-opt-settings-group', 'fpt-opt-spinner-type');
+		register_setting('fpt-opt-settings-group', 'fpt-opt-spinner-delay');
 		register_setting('fpt-opt-settings-group', 'fpt-opt-spinner-main-color');
 	}
 
@@ -69,6 +80,9 @@
 				 */
 				settings_fields( 'fpt-opt-settings-group' );
 				do_settings_sections( 'fpt-opt-settings-group' );
+		
+				$transition_type = get_option('fpt-opt-transition-type');
+				$spinner_type = get_option('fpt-opt-spinner-type');
 			?>
 			<table class="form-table">
 				<tr valign="top">
@@ -76,11 +90,11 @@
 					<td>
 						<select name="fpt-opt-transition-type" id="fpt-opt-transition-type">
 							<option value="">Select a transition-type</option>
-							<option value="fade" <?php echo (get_option('fpt-opt-transition-type') == 'fade') ? 'selected' : ''; ?>>Fade in/out</option>
-							<option value="collapse-vert" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-vert') ? 'selected' : ''; ?>>Collapse vertical</option>
-							<option value="collapse-horz" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-horz') ? 'selected' : ''; ?>>Collapse Horizontal</option>
-							<option value="collapse-diag-vert" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-diag-vert') ? 'selected' : ''; ?>>Collapse Diagonal/Vertical</option>
-							<option value="collapse-diag-horz" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-diag-horz') ? 'selected' : ''; ?>>Collapse Diagonal/Horizontal</option>
+							<option value="fade" <?php echo ($transition_type == 'fade') ? 'selected' : ''; ?>>Fade in/out</option>
+							<option value="collapse-vert" <?php echo ($transition_type == 'collapse-vert') ? 'selected' : ''; ?>>Collapse vertical</option>
+							<option value="collapse-horz" <?php echo ($transition_type == 'collapse-horz') ? 'selected' : ''; ?>>Collapse Horizontal</option>
+							<option value="collapse-diag-vert" <?php echo ($transition_type == 'collapse-diag-vert') ? 'selected' : ''; ?>>Collapse Diagonal/Vertical</option>
+							<option value="collapse-diag-horz" <?php echo ($transition_type == 'collapse-diag-horz') ? 'selected' : ''; ?>>Collapse Diagonal/Horizontal</option>
 						</select>
 					</td>
 				</tr>
@@ -99,7 +113,8 @@
 					<th scope="row"><?php _e('Spinner Type', 'rbl-fake-page-transitions'); ?></th>
 					<td>
 						<select name="fpt-opt-spinner-type" id="fpt-opt-spinner-type">
-							<option value=""><?php _e('No spinner', 'rbl-fake-page-transitions'); ?></option>
+							<option value="none" <?php echo ($spinner_type == 'none') ? 'selected' : ''; ?>><?php _e('No spinner', 'rbl-fake-page-transitions'); ?></option>
+							<option value="bars" <?php echo ($spinner_type == 'bars') ? 'selected' : ''; ?>><?php _e('Bars', 'rbl-fake-page-transitions'); ?></option>
 						</select>
 					</td>
 				</tr>
@@ -107,7 +122,19 @@
 				<tr valign="top">
 					<th scope="row"><?php _e('Spinner Main Color', 'rbl-fake-page-transitions'); ?></th>
 					<td>
-						<input type="color" name="fpt-opt-spinner-main-color" id="fpt-opt-spinner-main-color" value="<?php echo get_option('fpt-opt-transition-main-color'); ?>">
+						<input type="color" name="fpt-opt-spinner-main-color" id="fpt-opt-spinner-main-color" value="<?php echo get_option('fpt-opt-spinner-main-color'); ?>">
+					</td>
+				</tr>
+				
+				<tr valign="top">
+					<th scope="row"><?php _e('Spinner Delay (in ms)', 'rbl-fake-page-transitions'); ?></th>
+					<td>
+						<?php
+							$spinner_delay = get_option('fpt-opt-transition-delay');
+							if(empty($spinner_delay))
+								$spinner_delay = 500;
+						?>
+						<input type="number" class="widefat" name="fpt-opt-spinner-delay" id="fpt-opt-spinner-delay" value="<?php echo $spinner_delay; ?>">
 					</td>
 				</tr>
 			</table>
