@@ -1,2 +1,2 @@
-<div class="rbl_fake_transitions--collapse_horz fpt_left active" style="background-color:<?php echo $transition_main_color ?>;"></div>
-<div class="rbl_fake_transitions--collapse_horz fpt_right active" style="background-color:<?php echo $transition_main_color ?>;"></div>
+<div class="rbl_fake_transitions--collapse_diag-horz fpt_top active" style="border-color:<?php echo $transition_main_color ?>;border-left-color:transparent;border-bottom-color:transparent;"></div>
+<div class="rbl_fake_transitions--collapse_diag-horz fpt_bottom active" style="border-color:<?php echo $transition_main_color ?>;border-right-color:transparent;border-top-color:transparent;"></div>

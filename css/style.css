@@ -81,3 +81,73 @@
 .rbl_fake_transitions--collapse_horz.fpt_right.active {
 	left: 40vw;
 }
+
+.rbl_fake_transitions--collapse_vert {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transition: bottom .3s ease,
+				top .3s ease;
+}
+
+/* Collapse Diagonal Vertical*/
+.rbl_fake_transitions--collapse_diag-vert {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	border-width:50vh 50vw;
+	border-style:solid;
+	transition: bottom .3s ease,
+				top .3s ease;
+}
+
+.rbl_fake_transitions--collapse_diag-vert.fpt_top {
+	top: -100vh;
+	bottom: 100vh;
+}
+
+.rbl_fake_transitions--collapse_diag-vert.fpt_top.active {
+	top: 0;
+	bottom: 0;
+}
+
+.rbl_fake_transitions--collapse_diag-vert.fpt_bottom {
+	bottom: -100vh;
+	top: 100vh;
+}
+
+.rbl_fake_transitions--collapse_diag-vert.fpt_bottom.active {
+	top: 0;
+	bottom: 0;
+}
+
+/* Collapse Diagonal Horizontal*/
+.rbl_fake_transitions--collapse_diag-horz {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	border-width:50vh 50vw;
+	border-style:solid;
+	transition: right .3s ease,
+				left .3s ease;
+}
+
+.rbl_fake_transitions--collapse_diag-horz.fpt_bottom {
+	left: -100vw;
+	right: 100vw;
+}
+
+.rbl_fake_transitions--collapse_diag-horz.fpt_bottom.active {
+	left: 0;
+	right: 0;
+}
+
+.rbl_fake_transitions--collapse_diag-horz.fpt_top {
+	right: -100vw;
+	left: 100vw;
+}
+
+.rbl_fake_transitions--collapse_diag-horz.fpt_top.active {
+	left: 0;
+	right: 0;
+}

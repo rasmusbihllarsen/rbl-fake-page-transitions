@@ -79,8 +79,8 @@
 							<option value="fade" <?php echo (get_option('fpt-opt-transition-type') == 'fade') ? 'selected' : ''; ?>>Fade in/out</option>
 							<option value="collapse-vert" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-vert') ? 'selected' : ''; ?>>Collapse vertical</option>
 							<option value="collapse-horz" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-horz') ? 'selected' : ''; ?>>Collapse Horizontal</option>
-							<option value="collapse-diag-vert" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-diag-vert') ? 'selected' : ''; ?>>Collapse Diagnoal/Vertical</option>
-							<option value="collapse-diag-horz" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-diag-horz') ? 'selected' : ''; ?>>Collapse Diagnoal/Horizontal</option>
+							<option value="collapse-diag-vert" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-diag-vert') ? 'selected' : ''; ?>>Collapse Diagonal/Vertical</option>
+							<option value="collapse-diag-horz" <?php echo (get_option('fpt-opt-transition-type') == 'collapse-diag-horz') ? 'selected' : ''; ?>>Collapse Diagonal/Horizontal</option>
 						</select>
 					</td>
 				</tr>
@@ -99,7 +99,7 @@
 					<th scope="row"><?php _e('Spinner Type', 'rbl-fake-page-transitions'); ?></th>
 					<td>
 						<select name="fpt-opt-spinner-type" id="fpt-opt-spinner-type">
-							<option value="">Select a spinner-type</option>
+							<option value=""><?php _e('No spinner', 'rbl-fake-page-transitions'); ?></option>
 						</select>
 					</td>
 				</tr>
