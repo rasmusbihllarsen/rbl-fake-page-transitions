@@ -24,8 +24,8 @@
 		
 		if(!empty($transition_type)){
 	?>
-		<div class="rbl_fake_transitions active">
-			<?php
+	<div class="rbl_fake_transitions active">
+		<?php
 				include('transitions/'.$transition_type.'.php');
 
 				if($spinner_type != 'none') {
@@ -36,7 +36,7 @@
 				<?php include('spinners/'.$spinner_type.'.php'); ?>
 			</div>
 			<?php  } ?>
-		</div>
+	</div>
 	<?php
 		}
 	}
@@ -62,85 +62,104 @@
 	}
 
 	function fpt_options_settings_page() {
-		/*
-		 * This is the content for the main page of the custom option-page.
-		 * You can create general settings here,
-		 * but as of now, the page is for general information an documentation.
-		 */
 	?>
-	
-	<div class="wrap">
-		<h1><?php _e('Fake Transitions', 'Headline for subpage', 'rbl-custom-options'); ?></h1>
 
-		<form method="post" action="options.php">
-			<?php
-				/*
-				 * Initiate the setting-section.
-				 * Remember to rename subpage to the url-friendly version of your pages name.
-				 */
-				settings_fields( 'fpt-opt-settings-group' );
-				do_settings_sections( 'fpt-opt-settings-group' );
-		
-				$transition_type = get_option('fpt-opt-transition-type');
-				$spinner_type = get_option('fpt-opt-spinner-type');
-			?>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><?php _e('Transition Type', 'rbl-fake-page-transitions'); ?></th>
-					<td>
-						<select name="fpt-opt-transition-type" id="fpt-opt-transition-type">
-							<option value=""><?php _e('Select a transition-type', 'rbl-fake-page-transitions'); ?></option>
-							<option value="fade" <?php echo ($transition_type == 'fade') ? 'selected' : ''; ?>><?php _e('Fade in/out', 'rbl-fake-page-transitions'); ?></option>
-							<option value="collapse-vert" <?php echo ($transition_type == 'collapse-vert') ? 'selected' : ''; ?>><?php _e('Collapse vertical', 'rbl-fake-page-transitions'); ?></option>
-							<option value="collapse-horz" <?php echo ($transition_type == 'collapse-horz') ? 'selected' : ''; ?>><?php _e('Collapse Horizontal', 'rbl-fake-page-transitions'); ?></option>
-							<option value="collapse-diag-vert" <?php echo ($transition_type == 'collapse-diag-vert') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Vertical', 'rbl-fake-page-transitions'); ?></option>
-							<option value="collapse-diag-horz" <?php echo ($transition_type == 'collapse-diag-horz') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Horizontal', 'rbl-fake-page-transitions'); ?></option>
-						</select>
-					</td>
-				</tr>
-				
-				<tr valign="top">
-					<th scope="row"><?php _e('Transition Main Color', 'rbl-fake-page-transitions'); ?></th>
-					<td>
-						<input type="color" name="fpt-opt-transition-main-color" id="fpt-opt-transition-main-color" value="<?php echo get_option('fpt-opt-transition-main-color'); ?>">
-					</td>
-				</tr>
-			</table>
-			
-			<h2><?php _e('Spinner', 'rbl-fake-page-transitions'); ?></h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><?php _e('Spinner Type', 'rbl-fake-page-transitions'); ?></th>
-					<td>
-						<select name="fpt-opt-spinner-type" id="fpt-opt-spinner-type">
-							<option value="none" <?php echo ($spinner_type == 'none') ? 'selected' : ''; ?>><?php _e('No spinner', 'rbl-fake-page-transitions'); ?></option>
-							<option value="bars" <?php echo ($spinner_type == 'bars') ? 'selected' : ''; ?>><?php _e('Bars', 'rbl-fake-page-transitions'); ?></option>
-						</select>
-					</td>
-				</tr>
-				
-				<tr valign="top">
-					<th scope="row"><?php _e('Spinner Main Color', 'rbl-fake-page-transitions'); ?></th>
-					<td>
-						<input type="color" name="fpt-opt-spinner-main-color" id="fpt-opt-spinner-main-color" value="<?php echo get_option('fpt-opt-spinner-main-color'); ?>">
-					</td>
-				</tr>
-				
-				<tr valign="top">
-					<th scope="row"><?php _e('Spinner Delay (in ms)', 'rbl-fake-page-transitions'); ?></th>
-					<td>
-						<?php
-							$spinner_delay = get_option('fpt-opt-transition-delay');
-							if(empty($spinner_delay))
-								$spinner_delay = 500;
-						?>
-						<input type="number" class="widefat" name="fpt-opt-spinner-delay" id="fpt-opt-spinner-delay" value="<?php echo $spinner_delay; ?>">
-					</td>
-				</tr>
-			</table>
+		<div class="wrap">
+			<h1>
+				<?php _e('Fake Transitions', 'Headline for subpage', 'rbl-custom-options'); ?>
+			</h1>
 
-			<?php submit_button(); ?>
-		</form>
-	</div>
-	<?php
+			<form method="post" action="options.php">
+				<?php
+					settings_fields( 'fpt-opt-settings-group' );
+					do_settings_sections( 'fpt-opt-settings-group' );
+
+					$transition_type = get_option('fpt-opt-transition-type');
+					$spinner_type = get_option('fpt-opt-spinner-type');
+				?>
+				<div id="poststuff">
+					<div id="post-body" class="metabox-holder columns-2">
+						<div id="postbox-container-1" class="postbox-container">
+							<div id="side-sortables" class="meta-box-sortables ui-sortable" style="">
+								<div id="spinnerdiv" class="postbox ">
+									<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text"><?php _e('Vis eller skjul panel', 'rbl-fake-page-transitions'); ?></span><span class="toggle-indicator" aria-hidden="true"></span></button>
+									<h2 class="hndle ui-sortable-handle"><span><?php _e('Spinner', 'rbl-fake-page-transitions'); ?></span></h2>
+									<div class="inside">
+										<table>
+											<tr>
+												<td><strong><?php _e('Spinner Type', 'rbl-fake-page-transitions'); ?></strong></td>
+												<td>
+													<select name="fpt-opt-spinner-type" id="fpt-opt-spinner-type">
+														<option value="none" <?php echo ($spinner_type == 'none') ? 'selected' : ''; ?>><?php _e('No spinner', 'rbl-fake-page-transitions'); ?></option>
+														<option value="bars" <?php echo ($spinner_type == 'bars') ? 'selected' : ''; ?>><?php _e('Bars', 'rbl-fake-page-transitions'); ?></option>
+													</select>
+												</td>
+											</tr>
+											
+											<tr>
+												<td><strong><?php _e('Spinner Main Color', 'rbl-fake-page-transitions'); ?></strong></td>
+												<td>
+													<input type="color" name="fpt-opt-spinner-main-color" id="fpt-opt-spinner-main-color" value="<?php echo get_option('fpt-opt-spinner-main-color'); ?>">
+												</td>
+											</tr>
+											
+											<tr>
+												<td><strong><?php _e('Spinner Delay (in ms)', 'rbl-fake-page-transitions'); ?></strong></td>
+												<td>
+													<?php
+														$spinner_delay = get_option('fpt-opt-transition-delay');
+														if(empty($spinner_delay))
+															$spinner_delay = 500;
+													?>
+													<input type="number" class="widefat" name="fpt-opt-spinner-delay" id="fpt-opt-spinner-delay" value="<?php echo $spinner_delay; ?>">
+												</td>
+											</tr>
+										</table>
+
+										<?php submit_button(); ?>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="postbox-container-2" class="postbox-container">
+							<div id="normal-sortables" class="meta-box-sortables ui-sortable">
+
+								<div id="transitiondiv" class="postbox" style="">
+									<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text"><?php _e('Vis eller skjul panel', 'rbl-fake-page-transitions'); ?></span><span class="toggle-indicator" aria-hidden="true"></span></button>
+									<h2 class="hndle ui-sortable-handle"><span><?php _e('Transition', 'rbl-fake-page-transitions'); ?></span></h2>
+									<div class="inside">
+										<table>
+											<tr>
+												<td><strong><?php _e('Transition Type', 'rbl-fake-page-transitions'); ?></strong></td>
+												<td>
+													<select name="fpt-opt-transition-type" id="fpt-opt-transition-type">
+														<option value=""><?php _e('Select a transition-type', 'rbl-fake-page-transitions'); ?></option>
+														<option value="fade" <?php echo ($transition_type == 'fade') ? 'selected' : ''; ?>><?php _e('Fade in/out', 'rbl-fake-page-transitions'); ?></option>
+														<option value="collapse-vert" <?php echo ($transition_type == 'collapse-vert') ? 'selected' : ''; ?>><?php _e('Collapse vertical', 'rbl-fake-page-transitions'); ?></option>
+														<option value="collapse-horz" <?php echo ($transition_type == 'collapse-horz') ? 'selected' : ''; ?>><?php _e('Collapse Horizontal', 'rbl-fake-page-transitions'); ?></option>
+														<option value="collapse-diag-vert" <?php echo ($transition_type == 'collapse-diag-vert') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Vertical', 'rbl-fake-page-transitions'); ?></option>
+														<option value="collapse-diag-horz" <?php echo ($transition_type == 'collapse-diag-horz') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Horizontal', 'rbl-fake-page-transitions'); ?></option>
+													</select>
+												</td>
+											</tr>
+											
+											<tr>
+												<td><strong><?php _e('Transition Main Color', 'rbl-fake-page-transitions'); ?></strong></td>
+												<td>
+													<input type="color" name="fpt-opt-transition-main-color" id="fpt-opt-transition-main-color" value="<?php echo get_option('fpt-opt-transition-main-color'); ?>">
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div id="advanced-sortables" class="meta-box-sortables ui-sortable"></div>
+						</div>
+					</div>
+					<!-- /post-body -->
+					<br class="clear">
+				</div>
+			</form>
+		</div>
+		<?php
 	}
