@@ -133,7 +133,7 @@
 												<td><strong><?php _e('Transition Type', 'rbl-fake-page-transitions'); ?></strong></td>
 												<td>
 													<select name="fpt-opt-transition-type" id="fpt-opt-transition-type">
-														<option value=""><?php _e('Select a transition-type', 'rbl-fake-page-transitions'); ?></option>
+														<option value=""><?php _e('No transition', 'rbl-fake-page-transitions'); ?></option>
 														<option value="fade" <?php echo ($transition_type == 'fade') ? 'selected' : ''; ?>><?php _e('Fade in/out', 'rbl-fake-page-transitions'); ?></option>
 														<option value="collapse-vert" <?php echo ($transition_type == 'collapse-vert') ? 'selected' : ''; ?>><?php _e('Collapse vertical', 'rbl-fake-page-transitions'); ?></option>
 														<option value="collapse-horz" <?php echo ($transition_type == 'collapse-horz') ? 'selected' : ''; ?>><?php _e('Collapse Horizontal', 'rbl-fake-page-transitions'); ?></option>
