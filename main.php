@@ -89,12 +89,12 @@
 					<th scope="row"><?php _e('Transition Type', 'rbl-fake-page-transitions'); ?></th>
 					<td>
 						<select name="fpt-opt-transition-type" id="fpt-opt-transition-type">
-							<option value="">Select a transition-type</option>
-							<option value="fade" <?php echo ($transition_type == 'fade') ? 'selected' : ''; ?>>Fade in/out</option>
-							<option value="collapse-vert" <?php echo ($transition_type == 'collapse-vert') ? 'selected' : ''; ?>>Collapse vertical</option>
-							<option value="collapse-horz" <?php echo ($transition_type == 'collapse-horz') ? 'selected' : ''; ?>>Collapse Horizontal</option>
-							<option value="collapse-diag-vert" <?php echo ($transition_type == 'collapse-diag-vert') ? 'selected' : ''; ?>>Collapse Diagonal/Vertical</option>
-							<option value="collapse-diag-horz" <?php echo ($transition_type == 'collapse-diag-horz') ? 'selected' : ''; ?>>Collapse Diagonal/Horizontal</option>
+							<option value=""><?php _e('Select a transition-type', 'rbl-fake-page-transitions'); ?></option>
+							<option value="fade" <?php echo ($transition_type == 'fade') ? 'selected' : ''; ?>><?php _e('Fade in/out', 'rbl-fake-page-transitions'); ?></option>
+							<option value="collapse-vert" <?php echo ($transition_type == 'collapse-vert') ? 'selected' : ''; ?>><?php _e('Collapse vertical', 'rbl-fake-page-transitions'); ?></option>
+							<option value="collapse-horz" <?php echo ($transition_type == 'collapse-horz') ? 'selected' : ''; ?>><?php _e('Collapse Horizontal', 'rbl-fake-page-transitions'); ?></option>
+							<option value="collapse-diag-vert" <?php echo ($transition_type == 'collapse-diag-vert') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Vertical', 'rbl-fake-page-transitions'); ?></option>
+							<option value="collapse-diag-horz" <?php echo ($transition_type == 'collapse-diag-horz') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Horizontal', 'rbl-fake-page-transitions'); ?></option>
 						</select>
 					</td>
 				</tr>
@@ -107,7 +107,7 @@
 				</tr>
 			</table>
 			
-			<h2>Spinner</h2>
+			<h2><?php _e('Spinner', 'rbl-fake-page-transitions'); ?></h2>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row"><?php _e('Spinner Type', 'rbl-fake-page-transitions'); ?></th>
@@ -139,12 +139,7 @@
 				</tr>
 			</table>
 
-			<?php
-				/*
-				 * Submit button, so you can save your settings.
-				 */
-				submit_button();
-			?>
+			<?php submit_button(); ?>
 		</form>
 	</div>
 	<?php
