@@ -50,7 +50,6 @@
 	}
 	add_action('admin_menu', 'fpt_options_create_menu');
 
-
 	function register_fpt_options_settings() {
 		register_setting('fpt-opt-settings-group', 'fpt-opt-transition-type');
 		register_setting('fpt-opt-settings-group', 'fpt-opt-transition-main-color');
@@ -135,7 +134,7 @@
 													<select name="fpt-opt-transition-type" id="fpt-opt-transition-type">
 														<option value=""><?php _e('No transition', 'rbl-fake-page-transitions'); ?></option>
 														<option value="fade" <?php echo ($transition_type == 'fade') ? 'selected' : ''; ?>><?php _e('Fade in/out', 'rbl-fake-page-transitions'); ?></option>
-														<option value="collapse-vert" <?php echo ($transition_type == 'collapse-vert') ? 'selected' : ''; ?>><?php _e('Collapse vertical', 'rbl-fake-page-transitions'); ?></option>
+														<option value="collapse-vert" <?php echo ($transition_type == 'collapse-vert') ? 'selected' : ''; ?>><?php _e('Collapse Vertical', 'rbl-fake-page-transitions'); ?></option>
 														<option value="collapse-horz" <?php echo ($transition_type == 'collapse-horz') ? 'selected' : ''; ?>><?php _e('Collapse Horizontal', 'rbl-fake-page-transitions'); ?></option>
 														<option value="collapse-diag-vert" <?php echo ($transition_type == 'collapse-diag-vert') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Vertical', 'rbl-fake-page-transitions'); ?></option>
 														<option value="collapse-diag-horz" <?php echo ($transition_type == 'collapse-diag-horz') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Horizontal', 'rbl-fake-page-transitions'); ?></option>
