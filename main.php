@@ -138,6 +138,8 @@
 														<option value="collapse-horz" <?php echo ($transition_type == 'collapse-horz') ? 'selected' : ''; ?>><?php _e('Collapse Horizontal', 'rbl-fake-page-transitions'); ?></option>
 														<option value="collapse-diag-vert" <?php echo ($transition_type == 'collapse-diag-vert') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Vertical', 'rbl-fake-page-transitions'); ?></option>
 														<option value="collapse-diag-horz" <?php echo ($transition_type == 'collapse-diag-horz') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Horizontal', 'rbl-fake-page-transitions'); ?></option>
+														<option value="collapse-half-one" <?php echo ($transition_type == 'collapse-half-one') ? 'selected' : ''; ?>><?php _e('Half/Half #1', 'rbl-fake-page-transitions'); ?></option>
+														<option value="collapse-half-two" <?php echo ($transition_type == 'collapse-half-two') ? 'selected' : ''; ?>><?php _e('Half/Half #2', 'rbl-fake-page-transitions'); ?></option>
 													</select>
 												</td>
 											</tr>

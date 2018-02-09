@@ -152,6 +152,58 @@
 	right: 0;
 }
 
+/* Collapse Half One*/
+.rbl_fake_transitions--collapse_half_one {
+	position: absolute;
+	width: 50vw;
+	height:100vh;
+	transition: .3s ease;
+}
+
+.rbl_fake_transitions--collapse_half_one.fpt_bottom {
+	top:100%;
+	left:0;
+}
+
+.rbl_fake_transitions--collapse_half_one.fpt_bottom.active {
+	top:100%;
+}
+
+.rbl_fake_transitions--collapse_half_one.fpt_top {
+	bottom:100%;
+	right: 0;
+}
+
+.rbl_fake_transitions--collapse_half_one.fpt_top.active {
+	bottom: 0;
+}
+
+/* Collapse Half Two*/
+.rbl_fake_transitions--collapse_half_two {
+	position: absolute;
+	width: 50vw;
+	height:100vh;
+	transition: .3s ease;
+}
+
+.rbl_fake_transitions--collapse_half_two.fpt_bottom {
+	bottom:100%;
+	left:0;
+}
+
+.rbl_fake_transitions--collapse_half_two.fpt_bottom.active {
+	bottom:100%;
+}
+
+.rbl_fake_transitions--collapse_half_two.fpt_top {
+	top:100%;
+	right: 0;
+}
+
+.rbl_fake_transitions--collapse_half_two.fpt_top.active {
+	top: 0;
+}
+
 
 /* Spinners */
 .rbl_fpt_spinner--wrap {
