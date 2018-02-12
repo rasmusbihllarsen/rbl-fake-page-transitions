@@ -16,6 +16,14 @@
 	}
 	add_action( 'wp_enqueue_scripts', 'fpt_enqueue_files' );
 
+	add_action( 'admin_enqueue_scripts', 'wptuts_add_color_picker' );
+	function wptuts_add_color_picker( $hook ) {
+		if( is_admin() ) { 
+			wp_enqueue_style( 'wp-color-picker' ); 
+			wp_enqueue_script( 'fpt-admin-script', plugins_url( 'js/admin.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
+		}
+	}
+
 	function fpt_insert_transitions() {
 		$transition_type = get_option('fpt-opt-transition-type');
 		$transition_main_color = get_option('fpt-opt-transition-main-color');
@@ -95,39 +103,8 @@
 								<div id="side-sortables" class="meta-box-sortables ui-sortable" style="">
 									<div id="spinnerdiv" class="postbox ">
 										<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text"><?php _e('Vis eller skjul panel', 'rbl-fake-page-transitions'); ?></span><span class="toggle-indicator" aria-hidden="true"></span></button>
-										<h2 class="hndle ui-sortable-handle"><span><?php _e('Spinner', 'rbl-fake-page-transitions'); ?></span></h2>
+										<h2 class="hndle ui-sortable-handle"><span><?php _e('Preferences', 'rbl-fake-page-transitions'); ?></span></h2>
 										<div class="inside">
-											<table>
-												<tr>
-													<td><strong><?php _e('Spinner Type', 'rbl-fake-page-transitions'); ?></strong></td>
-													<td>
-														<select name="fpt-opt-spinner-type" id="fpt-opt-spinner-type">
-														<option value="none" <?php echo ($spinner_type == 'none') ? 'selected' : ''; ?>><?php _e('No spinner', 'rbl-fake-page-transitions'); ?></option>
-														<option value="bars" <?php echo ($spinner_type == 'bars') ? 'selected' : ''; ?>><?php _e('Bars', 'rbl-fake-page-transitions'); ?></option>
-													</select>
-													</td>
-												</tr>
-
-												<tr>
-													<td><strong><?php _e('Spinner Main Color', 'rbl-fake-page-transitions'); ?></strong></td>
-													<td>
-														<input type="color" name="fpt-opt-spinner-main-color" id="fpt-opt-spinner-main-color" value="<?php echo get_option('fpt-opt-spinner-main-color'); ?>">
-													</td>
-												</tr>
-
-												<tr>
-													<td><strong><?php _e('Spinner Delay (in ms)', 'rbl-fake-page-transitions'); ?></strong></td>
-													<td>
-														<?php
-														$spinner_delay = get_option('fpt-opt-transition-delay');
-														if(empty($spinner_delay))
-															$spinner_delay = 500;
-													?>
-															<input type="number" class="widefat" name="fpt-opt-spinner-delay" id="fpt-opt-spinner-delay" value="<?php echo $spinner_delay; ?>">
-													</td>
-												</tr>
-											</table>
-
 											<?php submit_button(); ?>
 										</div>
 									</div>
@@ -160,14 +137,14 @@
 												<tr>
 													<td><strong><?php _e('Transition Main Color', 'rbl-fake-page-transitions'); ?></strong></td>
 													<td>
-														<input type="color" name="fpt-opt-transition-main-color" id="fpt-opt-transition-main-color" value="<?php echo get_option('fpt-opt-transition-main-color'); ?>">
+														<input type="text" class="color-field" name="fpt-opt-transition-main-color" id="fpt-opt-transition-main-color" value="<?php echo get_option('fpt-opt-transition-main-color'); ?>">
 													</td>
 												</tr>
 
 												<tr class="transition-secondary-color" <?php if(!in_array($transition_type, $two_color_transitions)){ echo 'style="display:none;"'; } ?>>
 													<td><strong><?php _e('Transition Secondary Color', 'rbl-fake-page-transitions'); ?></strong></td>
 													<td>
-														<input type="color" name="fpt-opt-transition-secondary-color" id="fpt-opt-transition-secondary-color" value="<?php echo get_option('fpt-opt-transition-secondary-color'); ?>">
+														<input type="text" class="color-field" name="fpt-opt-transition-secondary-color" id="fpt-opt-transition-secondary-color" value="<?php echo get_option('fpt-opt-transition-secondary-color'); ?>">
 													</td>
 												</tr>
 											</table>
@@ -175,6 +152,46 @@
 									</div>
 								</div>
 								<div id="advanced-sortables" class="meta-box-sortables ui-sortable"></div>
+							</div>
+							<div id="postbox-container-3" class="postbox-container">
+								<div id="normal-sortables-3" class="meta-box-sortables ui-sortable" style="">
+									<div id="spinnerdiv" class="postbox ">
+										<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text"><?php _e('Vis eller skjul panel', 'rbl-fake-page-transitions'); ?></span><span class="toggle-indicator" aria-hidden="true"></span></button>
+										<h2 class="hndle ui-sortable-handle"><span><?php _e('Spinner', 'rbl-fake-page-transitions'); ?></span></h2>
+										<div class="inside">
+											<table>
+												<tr>
+													<td><strong><?php _e('Spinner Type', 'rbl-fake-page-transitions'); ?></strong></td>
+													<td>
+														<select name="fpt-opt-spinner-type" id="fpt-opt-spinner-type">
+														<option value="none" <?php echo ($spinner_type == 'none') ? 'selected' : ''; ?>><?php _e('No spinner', 'rbl-fake-page-transitions'); ?></option>
+														<option value="bars" <?php echo ($spinner_type == 'bars') ? 'selected' : ''; ?>><?php _e('Bars', 'rbl-fake-page-transitions'); ?></option>
+													</select>
+													</td>
+												</tr>
+
+												<tr>
+													<td><strong><?php _e('Spinner Main Color', 'rbl-fake-page-transitions'); ?></strong></td>
+													<td>
+														<input type="text" name="fpt-opt-spinner-main-color" id="fpt-opt-spinner-main-color" class="color-field" value="<?php echo get_option('fpt-opt-spinner-main-color'); ?>">
+													</td>
+												</tr>
+
+												<tr>
+													<td><strong><?php _e('Spinner Delay (in ms)', 'rbl-fake-page-transitions'); ?></strong></td>
+													<td>
+														<?php
+														$spinner_delay = get_option('fpt-opt-transition-delay');
+														if(empty($spinner_delay))
+															$spinner_delay = 500;
+													?>
+															<input type="number" class="widefat" name="fpt-opt-spinner-delay" id="fpt-opt-spinner-delay" value="<?php echo $spinner_delay; ?>">
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<!-- /post-body -->
