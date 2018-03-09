@@ -58,6 +58,10 @@
 												<option value="move-right" <?php echo ($transition_type == 'move-right') ? 'selected' : ''; ?>><?php _e('Move Right', 'rbl-fake-page-transitions'); ?></option>
 											</select>
 											</td>
+											
+											<td rowspan="3">
+												<div class="fpt-viewport fpt-view--transition"></div>
+											</td>
 										</tr>
 
 										<tr>

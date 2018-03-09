@@ -21,6 +21,8 @@
 		if( is_admin() ) { 
 			wp_enqueue_style( 'wp-color-picker' ); 
 			wp_enqueue_script( 'fpt-admin-script', plugins_url( 'js/admin.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
+			wp_enqueue_style( 'fake-page-transitions-css', plugin_dir_url( __FILE__ ) . 'css/style.css', '1.0.0');
+			wp_enqueue_style( 'fpt-admin-css', plugins_url( 'css/admin.css', __FILE__ ), '1.0.0' ); 
 		}
 	}
 
@@ -74,4 +76,32 @@
 		register_setting('fpt-opt-settings-group', 'fpt-opt-spinner-main-color');
 	}
 
-include('pages/settings.php');
+	add_action('wp_ajax_fpt_preview', 'fpt_preview');
+	add_action('wp_ajax_nopriv_fpt_preview', 'fpt_preview');
+	function fpt_preview()
+	{
+		$type = $_POST['type'];
+
+		ob_start();
+		include('transitions/' . $type .'.php');
+		$html = ob_get_clean();
+		
+		switch($type) {
+			case 'collapse-diag-vert':
+			case 'collapse-diag-horz':
+				$colored = 'border-color';
+				break;
+			default:
+				$colored = 'background-color';
+				break;
+		}
+
+		echo json_encode(array(
+			'success'	=> true,
+			'html'		=> $html,
+			'colored'	=> $colored,
+		));
+		die();
+	}
+
+	include('pages/settings.php');
