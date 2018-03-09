@@ -52,6 +52,10 @@
 												<option value="collapse-diag-horz" <?php echo ($transition_type == 'collapse-diag-horz') ? 'selected' : ''; ?>><?php _e('Collapse Diagonal/Horizontal', 'rbl-fake-page-transitions'); ?></option>
 												<option value="collapse-half-one" <?php echo ($transition_type == 'collapse-half-one') ? 'selected' : ''; ?>><?php _e('Half/Half #1', 'rbl-fake-page-transitions'); ?></option>
 												<option value="collapse-half-two" <?php echo ($transition_type == 'collapse-half-two') ? 'selected' : ''; ?>><?php _e('Half/Half #2', 'rbl-fake-page-transitions'); ?></option>
+												<option value="move-up" <?php echo ($transition_type == 'move-up') ? 'selected' : ''; ?>><?php _e('Move Up', 'rbl-fake-page-transitions'); ?></option>
+												<option value="move-down" <?php echo ($transition_type == 'move-down') ? 'selected' : ''; ?>><?php _e('Move Down', 'rbl-fake-page-transitions'); ?></option>
+												<option value="move-left" <?php echo ($transition_type == 'move-left') ? 'selected' : ''; ?>><?php _e('Move Left', 'rbl-fake-page-transitions'); ?></option>
+												<option value="move-right" <?php echo ($transition_type == 'move-right') ? 'selected' : ''; ?>><?php _e('Move Right', 'rbl-fake-page-transitions'); ?></option>
 											</select>
 											</td>
 										</tr>

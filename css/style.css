@@ -8,12 +8,12 @@
 	z-index: -1;
 	overflow:hidden;
 }
-
 .rbl_fake_transitions.active {
 	height: 100%;
 	z-index: 99999999;
 }
 
+/* Fade */
 .rbl_fake_transitions--fade {
 	opacity: 0;
 	position: absolute;
@@ -23,7 +23,6 @@
 	bottom: 0;
 	transition: opacity .3s ease;
 }
-
 .rbl_fake_transitions--fade.active {
 	opacity: 1;
 }
@@ -202,6 +201,62 @@
 
 .rbl_fake_transitions--collapse_half_two.fpt_top.active {
 	top: 0;
+}
+
+/* Move Up */
+.rbl_fake_transitions--move_up {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transition: bottom .3s ease;
+	top: 0;
+	bottom: 100vh;
+}
+
+.rbl_fake_transitions--move_up.fpt_top.active {
+	bottom: 0vh;
+}
+
+/* Move Down */
+.rbl_fake_transitions--move_down {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transition: top .3s ease;
+	bottom: 0;
+	top: 100vh;
+}
+
+.rbl_fake_transitions--move_down.fpt_top.active {
+	top: 0vh;
+}
+
+/* Move Left */
+.rbl_fake_transitions--move_left {
+	position: absolute;
+	left: 0;
+	width: 0vw;
+	transition: width .3s ease;
+	top: 0;
+	bottom: 0;
+}
+
+.rbl_fake_transitions--move_left.fpt_top.active {
+	width: 100vw;
+}
+
+/* Move Right */
+.rbl_fake_transitions--move_right {
+	position: absolute;
+	right: 0;
+	width: 0vw;
+	transition: width .3s ease;
+	top: 0;
+	bottom: 0;
+}
+
+.rbl_fake_transitions--move_right.fpt_top.active {
+	width: 100vw;
 }
 
 
