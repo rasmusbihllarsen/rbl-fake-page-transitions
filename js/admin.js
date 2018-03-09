@@ -23,7 +23,7 @@ jQuery(document).ready(function(){
 				console.log('SUCCESS', result);
 				jQuery('.fpt-view--transition').html(result.html);
 
-				jQuery('.fpt-view--transition > div:not(.fpt-spinner)').css(result.colored, '#999999');
+				jQuery('.fpt-view--transition > div:not(.fpt-spinner)').css(result.colored, jQuery('#fpt-opt-transition-main-color').val());
 				
 				setTimeout(function(){
 					jQuery('.fpt-view--transition > div.active').removeClass('active');
