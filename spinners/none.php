@@ -1,0 +1,1 @@
+<?php // Emptyness is beautiful
