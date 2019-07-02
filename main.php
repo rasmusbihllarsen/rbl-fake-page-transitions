@@ -2,7 +2,7 @@
 	/*
 	 * Plugin Name: Fake Page Transitions
 	 * Description: Make it look like your page is transitioning, even though it just changes page
-	 * Version: 1.0.10
+	 * Version: 1.0.11
 	 * Plugin URI: https://github.com/rasmusbihllarsen/rbl-fake-page-transitions
 	 * Author URI: http://rasmusbihllarsen.com/
 	 * Author: Rasmus Bihl Larsen
