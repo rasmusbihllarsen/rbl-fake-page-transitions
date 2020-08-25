@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
 	var siteURL = "http://" + top.location.host.toString(),
-		$internalLinks = jQuery("a[href^='"+siteURL+"'], a[href^='/'], a[href^='./'], a[href^='../'], a[href^='#']"),
+		$internalLinks = jQuery("a[href^='"+siteURL+"'], a[href^='/'], a[href^='./'], a[href^='../']"),
 		hasSpinner = jQuery('.rbl_fpt_spinner--wrap').size(),
 		delay = 0;
 
